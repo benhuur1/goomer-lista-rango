@@ -5,7 +5,6 @@
 }
 
 body {
-  width: 1920px;
   padding-top: 4rem;
   margin: 0px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -16,9 +15,11 @@ body {
 }
 
 .container {
-  max-width: 100%;
-  padding: 0 1rem;
-  margin: 0 auto;
+  width: 90%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .title {
@@ -30,9 +31,9 @@ body {
   opacity: 1;
 }
 
-.App {
-  width: 100%;
-  display: flex;
-  /* flex-direction: column; */
-  /* min-height: calc(100vh + 10rem); */
+
+@media(max-width: 40rem){
+  .container{
+    width: 100%;
+  }
 }
