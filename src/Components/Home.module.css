@@ -1,0 +1,51 @@
+.input {
+  width: 1600px;
+  height: 40px;
+  background: #fbfbfb 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  padding-right: 1.5em;
+  border: 5px;
+  border-color: red;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="black" stroke-width="2"><circle cx="7" cy="7" r="6" /><path d="M11 11 L15 15" /></svg>');
+  background-size: 1.2em;
+  background-repeat: no-repeat;
+  background-position: right 0.5em center;
+}
+
+.input[type='search']:focus,
+.input[type='search']:hover {
+  outline: none;
+  border-color: #fbfbfb;
+  background: white;
+  box-shadow: 0 0 0 3px #fbfbfb;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="black" stroke-width="2"><circle cx="7" cy="7" r="6" /><path d="M11 11 L15 15" /></svg>');
+  background-size: 1.2em;
+  background-repeat: no-repeat;
+  background-position: right 0.5em center;
+}
+
+::-webkit-input-placeholder {
+  color: #131313;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 1;
+  padding-left: 10px;
+}
+input:-moz-placeholder {
+  color: #131313;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 1;
+  padding-left: 10px;
+}
+textarea:-moz-placeholder {
+  color: #131313;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 1;
+  padding-left: 10px;
+}
