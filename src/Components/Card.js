@@ -1,109 +1,48 @@
 import React from 'react';
 import styles from './Card.module.css';
-import imgFood from '../Assets/vegan-restaurant-logo-design_1438-10@2x.png';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import useFetch from '../Hooks/useFetch';
+import { RESTAURANTES_GET } from '../Api';
+import Error from './Helper/Error';
+import Loading from './Helper/Loading';
 
 const Card = () => {
-  return (
-    <selection className={styles.card}>
-      <div className={styles.cardBox}>
-        <span className={styles.aberto}>Aberto agora</span>
-        <div className={styles.item}>
-          <div>
-            <img src={imgFood} alt="Icone nature food" />
+  const { data, loading, error, request } = useFetch();
+  // const [horaAtual, setHoraAtual] = React.useState(0);
+
+  React.useEffect(() => {
+    async function fetchRestaurants() {
+      const { url, options } = RESTAURANTES_GET();
+      const { json } = await request(url, options);
+      return json;
+    }
+    fetchRestaurants();
+  }, [request]);
+
+  // React.useEffect(() => {
+  //   const hora = new Date().getHours();
+  //   const minutos = new Date().getMinutes();
+  //   const segundos = new Date().getSeconds();
+  //   const horaAtual = hora + 'h ' + minutos + 'm ' + segundos + 's';
+  //   setHoraAtual(horaAtual);
+  //   console.log(horaAtual)
+  // }, [horaAtual]);
+
+  if (error) return <Error error={error} />;
+  if (loading) return <Loading />;
+  if (data)
+    return (
+      <section className={styles.card}>
+        {data.map((item) => (
+          <div key={item.id}>
+            <li>{item.name}</li>
+            <li>{item.address}</li>
+            <img src={item.image} style={{ width: '50px' }} alt={item.name} />
           </div>
-          <div>
-            <Link to={`/cardapio`}>Nome do Restaurante</Link>
-            <p>Endereço do restaurante</p>
-          </div>
-        </div>
-      </div>
-      <div className={styles.cardBox}>
-        <span className={styles.aberto}>Aberto agora</span>
-        <div className={styles.item}>
-          <div>
-            <img src={imgFood} alt="Icone nature food" />
-          </div>
-          <div>
-            <Link to={`/cardapio`}>Nome do Restaurante</Link>
-            <p>Endereço do restaurante</p>
-          </div>
-        </div>
-      </div>
-      <div className={styles.cardBox}>
-        <span className={styles.aberto}>Aberto agora</span>
-        <div className={styles.item}>
-          <div>
-            <img src={imgFood} alt="Icone nature food" />
-          </div>
-          <div>
-            <Link to={`/cardapio`}>Nome do Restaurante</Link>
-            <p>Endereço do restaurante</p>
-          </div>
-        </div>
-      </div>
-      <div className={styles.cardBox}>
-        <span className={styles.aberto}>Aberto agora</span>
-        <div className={styles.item}>
-          <div>
-            <img src={imgFood} alt="Icone nature food" />
-          </div>
-          <div>
-            <Link to={`/cardapio`}>Nome do Restaurante</Link>
-            <p>Endereço do restaurante</p>
-          </div>
-        </div>
-      </div>
-      <div className={styles.cardBox}>
-        <span className={styles.fechado}>Fechado</span>
-        <div className={styles.item}>
-          <div>
-            <img src={imgFood} alt="Icone nature food" />
-          </div>
-          <div>
-            <Link to={`/cardapio`}>Nome do Restaurante</Link>
-            <p>Endereço do restaurante</p>
-          </div>
-        </div>
-      </div>
-      <div className={styles.cardBox}>
-        <span className={styles.fechado}>Fechado</span>
-        <div className={styles.item}>
-          <div>
-            <img src={imgFood} alt="Icone nature food" />
-          </div>
-          <div>
-            <Link to={`/cardapio`}>Nome do Restaurante</Link>
-            <p>Endereço do restaurante</p>
-          </div>
-        </div>
-      </div>
-      <div className={styles.cardBox}>
-        <span className={styles.fechado}>Fechado</span>
-        <div className={styles.item}>
-          <div>
-            <img src={imgFood} alt="Icone nature food" />
-          </div>
-          <div>
-            <Link to={`/cardapio`}>Nome do Restaurante</Link>
-            <p>Endereço do restaurante</p>
-          </div>
-        </div>
-      </div>
-      <div className={styles.cardBox}>
-        <span className={styles.fechado}>Fechado</span>
-        <div className={styles.item}>
-          <div>
-            <img src={imgFood} alt="Icone nature food" />
-          </div>
-          <div>
-            <Link to={`/cardapio`}>Nome do Restaurante</Link>
-            <p>Endereço do restaurante</p>
-          </div>
-        </div>
-      </div>
-    </selection>
-  );
+        ))}
+      </section>
+    );
+  else return null;
 };
 
 export default Card;

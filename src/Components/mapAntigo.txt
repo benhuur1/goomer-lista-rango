@@ -1,0 +1,15 @@
+        {data.map((restaurant) => (
+          <div className={styles.cardBox} key={restaurant.id}>
+            <span className={styles.aberto}>Aberto agora</span>
+            <div className={styles.item}>
+              <div>
+                <img src={restaurant.image} alt={restaurant.name} />
+              </div>
+              <div>
+                <Link to={`/cardapio`}>{restaurant.name}</Link>
+                <p>{restaurant.address}</p>
+                <p key={restaurant.id}>{restaurant.hours.to}</p>
+              </div>
+            </div>
+          </div>
+        ))}

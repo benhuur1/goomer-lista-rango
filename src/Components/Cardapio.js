@@ -2,11 +2,10 @@ import React from 'react';
 import styles from './Cardapio.module.css';
 import CardMenu from './CardMenu';
 import imgFood from '../Assets/vegan-restaurant-logo-design_1438-10@2x.png';
-import stylesInput from './Home.module.css';
 
 const Cardapio = () => {
   return (
-    <div className="container">
+    <div className="container1">
       <div className={styles.cardapio}>
         <div className={styles.cardapioHeader}>
           <div className={`${styles.item} `}>
@@ -32,15 +31,18 @@ const Cardapio = () => {
           </div>
           <div className={`${styles.item} `}></div>
         </div>
-        <input type="search" className={stylesInput.input} />
-        <CardMenu />
         <div className="col-auto">
-          <label className="sr-only" for="inlineFormInputGroup">
+          <label className="sr-only" htmlFor="inlineFormInputGroup">
             Username
           </label>
           <div className="input-group mb-2">
             <div className="input-group-prepend">
-              <div className="input-group-text" style={{background: 'white', borderColor:'grey'}}>Buscar no cardápio</div>
+              <div
+                className="input-group-text"
+                style={{ background: 'white', borderColor: 'grey' }}
+              >
+                Buscar no cardápio
+              </div>
             </div>
             <input
               type="text"
@@ -50,6 +52,7 @@ const Cardapio = () => {
             />
           </div>
         </div>
+        <CardMenu />
       </div>
     </div>
   );
